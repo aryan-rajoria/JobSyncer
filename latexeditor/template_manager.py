@@ -23,6 +23,14 @@ class TemplateManager:
         # lists the available templates
         pass
 
+    def list_segments_in_templates(self, template_name):
+        # given a template_name write its available segments
+        pass
+
+    def load_template_modules(self, template_name):
+        # load the template_modules
+        pass
+
     def get_template_object(self):
         # returns the template object after construction
         pass
