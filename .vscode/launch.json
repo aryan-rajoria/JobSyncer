@@ -1,0 +1,76 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "ai resume server",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "flask",
+            "env": {
+                "FLASK_APP": "${workspaceFolder}/airesumeeditor/main_server.py",
+                "FLASK_DEBUG": "1"
+            },
+            "args": [
+                "run",
+                "--debug",
+                "--no-reload"
+            ],
+            "jinja": true,
+            "autoStartBrowser": false
+        },
+        {
+            "name": "embedder server",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "flask",
+            "env": {
+                "FLASK_APP": "${workspaceFolder}/airesumeeditor/featureextractor/embedderserver.py",
+                "FLASK_DEBUG": "1"
+            },
+            "args": [
+                "run",
+                "--debug",
+                "--no-reload"
+            ],
+            "jinja": true,
+            "autoStartBrowser": false
+        },
+        {
+            "name": "latexeditor",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "flask",
+            "env": {
+                "FLASK_APP": "${workspaceFolder}/airesumeeditor/latexeditor/resume_server.py",
+                "FLASK_DEBUG": "1"
+            },
+            "args": [
+                "run",
+                "--debug",
+                "--no-reload"
+            ],
+            "jinja": true,
+            "autoStartBrowser": false
+        },
+        {
+            "name": "llmserver",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "flask",
+            "env": {
+                "FLASK_APP": "${workspaceFolder}/llmserver/main_server.py",
+                "FLASK_DEBUG": "1"
+            },
+            "args": [
+                "run",
+                "--debug",
+                "--no-reload"
+            ],
+            "jinja": true,
+            "autoStartBrowser": false
+        },
+    ]
+}

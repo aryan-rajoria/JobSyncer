@@ -8,6 +8,7 @@ def send_to_embedding_service_and_save(data_type, value):
         print("Success /embed called with data")
     else:
         print(r)
+    return r.data
 
 
 def generate_resume_pdf():
