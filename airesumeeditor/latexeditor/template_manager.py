@@ -1,4 +1,4 @@
-class Template:
+class _Template:
     def __init__(self, template_name):
         # initializes the template class
         # sets the template using template_name

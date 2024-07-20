@@ -9,5 +9,5 @@
     b. store embedding into vector database.
     c. has a seperate queue handling
 
-    all
+    all 
 """
