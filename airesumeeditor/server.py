@@ -11,3 +11,54 @@
 
     all 
 """
+import json
+from flask import Flask, request, jsonify, render_template, make_response
+from generate_resume import generate_resume_pdf
+
+app = Flask(__name__)
+
+# Store data in memory (temporary - better to use a database for persistence)
+cv_data = {}
+job_descriptions = {}
+
+@app.route('/api/upload_cv', methods=['POST'])
+def upload_cv():
+    try:
+        data = request.get_json()
+        cv_id = data.get('id')  # Get an ID for the CV if provided
+        if not cv_id:
+            return jsonify({'error': 'CV ID is required'}), 400
+        cv_data[cv_id] = data
+        return jsonify({'message': 'CV uploaded successfully'})
+    except json.JSONDecodeError:
+        return jsonify({'error': 'Invalid JSON data'}), 400
+
+@app.route('/api/upload_job_description', methods=['POST'])
+def upload_job_description():
+    try:
+        data = request.data.decode('utf-8')
+        job_id = request.args.get('id')  # Get an ID for the job description
+        if not job_id:
+            return jsonify({'error': 'Job ID is required'}), 400
+        job_descriptions[job_id] = data
+        return jsonify({'message': 'Job description uploaded successfully'})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/generate_resume/<cv_id>', methods=['GET'])
+def generate_resume(cv_id):
+    if cv_id not in cv_data:
+        return jsonify({'error': 'CV not found'}), 404
+
+    try:
+        html = render_template('resume_template.html', **cv_data[cv_id])
+        pdf = generate_resume_pdf(html) 
+        response = make_response(pdf)
+        response.headers['Content-Type'] = 'application/pdf'
+        response.headers['Content-Disposition'] = f'inline; filename=resume_{cv_id}.pdf'
+        return response
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+if __name__ == '__main__':
+    app.run(debug=True)
