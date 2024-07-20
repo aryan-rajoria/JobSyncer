@@ -13,7 +13,7 @@
 """
 import json
 from flask import Flask, request, jsonify, render_template, make_response
-from generate_resume import generate_resume_pdf
+from airesumeeditor.service_helper import generate_resume_pdf
 from resume_processor import ResumeProcessor
 
 app = Flask(__name__)
