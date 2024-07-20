@@ -14,14 +14,16 @@
 import json
 from flask import Flask, request, jsonify, render_template, make_response
 from generate_resume import generate_resume_pdf
+from resume_processor import ResumeProcessor
 
 app = Flask(__name__)
 
 # Store data in memory (temporary - better to use a database for persistence)
 cv_data = {}
 job_descriptions = {}
+resume = ResumeProcessor()
 
-@app.route('/api/upload_cv', methods=['POST'])
+@app.route('/upload_cv', methods=['POST'])
 def upload_cv():
     try:
         data = request.get_json()
@@ -29,11 +31,12 @@ def upload_cv():
         if not cv_id:
             return jsonify({'error': 'CV ID is required'}), 400
         cv_data[cv_id] = data
+        resume.cv(cv_data[cv_id])
         return jsonify({'message': 'CV uploaded successfully'})
     except json.JSONDecodeError:
         return jsonify({'error': 'Invalid JSON data'}), 400
 
-@app.route('/api/upload_job_description', methods=['POST'])
+@app.route('/upload_jd', methods=['POST'])
 def upload_job_description():
     try:
         data = request.data.decode('utf-8')
@@ -41,18 +44,18 @@ def upload_job_description():
         if not job_id:
             return jsonify({'error': 'Job ID is required'}), 400
         job_descriptions[job_id] = data
+        resume.jd(job_descriptions[job_id])
         return jsonify({'message': 'Job description uploaded successfully'})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-@app.route('/api/generate_resume/<cv_id>', methods=['GET'])
+@app.route('/generate_resume/<cv_id>', methods=['GET'])
 def generate_resume(cv_id):
     if cv_id not in cv_data:
         return jsonify({'error': 'CV not found'}), 404
 
     try:
-        html = render_template('resume_template.html', **cv_data[cv_id])
-        pdf = generate_resume_pdf(html) 
+        pdf = generate_resume_pdf(resume)
         response = make_response(pdf)
         response.headers['Content-Type'] = 'application/pdf'
         response.headers['Content-Disposition'] = f'inline; filename=resume_{cv_id}.pdf'

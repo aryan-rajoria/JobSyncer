@@ -1,10 +1,10 @@
 from gpt4all import GPT4All
 import ray
 
-@ray.remote(num_cpus=6)
+@ray.remote(num_cpus=3)
 def gpt4all_respond(queue_list):
     gpt4all_model = GPT4All("orca-mini-3b-gguf2-q4_0.gguf")
-    gpt4all_model.model.set_thread_count(6)
+    gpt4all_model.model.set_thread_count(3)
 
     # Remote processing to detach from client process.
     while True:
