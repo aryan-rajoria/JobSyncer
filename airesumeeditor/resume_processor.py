@@ -1,4 +1,5 @@
 import json
+from service_helper import send_to_embedding_service_and_save
 
 class ResumeProcessor:
 

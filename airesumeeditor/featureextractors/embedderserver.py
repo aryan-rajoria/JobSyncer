@@ -43,7 +43,7 @@ app = Flask(__name__)
 queue_list = start_llm_backend(max_con=4)  # Adjust max_con based on resources
 
 @app.route('/embed', methods=['POST'])
-def chat_completions():
+def embeddings():
     if request.method == 'POST':
         data = request.get_json()
 
@@ -61,7 +61,6 @@ def chat_completions():
             return jsonify({"error": "Internal server error"}), 500
 
         return jsonify({"choices": [{"message": {"content": response}}]})
-    
 
 
 if __name__ == '__main__':

@@ -12,8 +12,8 @@ from gpt4all_module import (
 app = Flask(__name__)
 queue_list = start_llm_backend(max_con=2)  # Adjust max_con based on resources
 
-@app.route('/chat', methods=['POST'])
-def chat_completions():
+@app.route('/generate', methods=['POST'])
+def llmgenerate():
     if request.method == 'POST':
         data = request.get_json()
 
