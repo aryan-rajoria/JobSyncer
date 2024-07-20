@@ -1,1 +1,2 @@
-class ResumeProcessor
+class ResumeProcessor:
+    pass

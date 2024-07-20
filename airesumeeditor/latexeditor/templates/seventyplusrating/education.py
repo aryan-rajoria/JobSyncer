@@ -11,3 +11,15 @@ class Education:
 
     def get_fields(self) -> List[str]:
         pass
+
+"""
+%-----------EDUCATION-----------
+\section{\textbf{Education}}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Bachelor of Technology in Computer Science and Engineering(Cyber Security)}{CGPA: xx}
+      {Shri Ramdeobaba College of Engineering and Management, Nagpur}{2020-24}
+  \resumeSubHeadingListEnd
+\vspace{-5.5mm}
+%
+"""

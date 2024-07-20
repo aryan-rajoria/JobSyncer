@@ -1,1 +1,1 @@
-from template_manager import TemplateManager
+from templates.template_manager import TemplateManager
