@@ -1,0 +1,45 @@
+.add-item {
+    width: 4%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: rgb(46, 46, 46);
+    color: white;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer !important;
+}
+
+.add-item::before {
+    content: "+";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    font-size: 150%; /* This makes the plus sign about 50% of the circle's width */
+    line-height: 1; /* Ensures vertical centering */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+input{
+    background-color: transparent !important;
+}
+input:focus{
+    outline: none !important;
+}
+
+.item{
+    margin-left: 20px;
+}
+.item::before{
+    content: "•";
+    position: absolute;
+    color: black !important; 
+    font-weight: 800;
+    left: 35px;
+}
