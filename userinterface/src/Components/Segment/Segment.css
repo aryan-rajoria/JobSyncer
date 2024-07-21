@@ -1,0 +1,5 @@
+.segment:hover{
+    cursor: pointer;
+    transform: scale(1.02);
+    box-shadow: 0px 2px 5px rgba(52, 43, 226, 0.58);
+}
