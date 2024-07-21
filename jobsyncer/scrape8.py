@@ -7,8 +7,8 @@ import time
 import re
 from frameworks import frameworks
 
-lnk_usr = 'adityagandhi176@gmail.com'
-lnk_pwd = 'adis2345890'
+lnk_usr = LINKEDIN_USERNAME
+lnk_pwd = LINKEDIN_PASSWORD
 
 job_url = 'https://www.linkedin.com/jobs/collections/recommended/?currentJobId=3912824359&eBP=CwEAAAGQzVrt-WANa2p30zqt7xU90QSe8QMekFfvT33jKFmw9mGrd3siXYjKXhpQk6n6XW2-dYVGZsnNzc16cPZo9Fpa4ydW_leXTfVyupKV1c1A6b_7Rm51qfvx-gA5Ror05g3W67EBKpojqy_tPExnHYZg7XoQFfDp3uYN1On8gMtzDU5VmFiJWxXQo7xGRMILggR8HC5MpwHdZeNQ4MFdnE1mFEbIOMd450TYcfgH4W6iDmLLJK5ig-Gn5lH5bXhhh-8oRWmUWvVSwnbDK-84jNychDvYmM-5eRpA6mQF4NPzyolNA7xx_PNhWNBhFFD5rwV3FEyyODY59PGs6ZWceB0PSZ8Dk5NU1fWFLUCVs9pagBjfjrH_7bConSKA7x0R11CgEkv-pB-_XtLmbb2XI6TyHv58NuHJB4yoX7UjwI5ivEhYDdNAI6MTtIKfFGtnRmQ&refId=PqUkDhIn%2B9B7vpNQ6XgKkg%3D%3D&trackingId=3X2W7AYxxelTiaw1P6h5rQ%3D%3D'
 
