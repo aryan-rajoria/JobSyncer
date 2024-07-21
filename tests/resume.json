@@ -1,0 +1,80 @@
+{
+    "data" : [
+      {
+        "segment_title": "projects",
+        "items": [
+          {
+            "title": "Web Based Facial Recognition Authentication (Liveness Detection)",
+            "description": "A website based facial authentication system, implemented using a Chrome Extension.",
+            "features": ["Facilitating users' logins to websites without having to rememb er their credentials", 
+                        "Used Live detection techniques to create high order security",
+                        "Technology Used: Python, Reactjs, Bootstrap"]
+          },
+          {
+            "title": "Realtime Chat App",
+            "description": "A react based web application which al low users to chat in real time.",
+            "features": ["Used Firebase Authentication(SDK) to facilitate authentication & Cloud Firestore to store data.", 
+                        "Technology Used: Reactjs, Firebase, Bo otstrap, HTML."]
+          }
+        ]
+      },
+      {
+        "segment_title": "education",
+        "title": "Bachelor of Technology in Computer Science and Engineering(Cyber Security)",
+        "year": "2020-24",
+        "location": "Shri Ramdeobaba Col lege of Engineering and Management, Nagpur",
+        "cgpa": "9.0"
+        },
+        {
+            "segment_title": "header",
+            "name": "John Doe",
+            "email": "johndoe@gmail.com",
+            "github": "github.com/johndoe",
+            "linkedin": "linkedin.com/in/johndoe",
+            "phone": "1234567890",
+            "course": "B.Tech in Computer Science and Engineering"
+        },
+        {
+            "segment_title": "skills",
+            "items": [
+              {
+                "title": "Languages",
+                "skills": ["Python", "JavaScript", "C++", "Java"]
+              },
+              {
+                "title": "Web Development Tools",
+                "skills": ["Reactjs", "HTML", "CSS", "Bootstrap"]
+              },
+              {
+                "title": "Database Management",
+                "skills": ["Firebase", "MySQL"]
+              }
+            ]
+        },
+        {
+            "segment_title": "experience",
+            "items": [
+              {
+                "title": "Web Developer Intern",
+                "company": "ABC Company",
+                "location": "Online",
+                "duration": "June - August 2021",
+                "description": [
+                    "Developed a web based facial recognition authentication system.",
+                    "Implemented a chat application using Reactjs and Firebase."
+                ]
+              },
+              {
+                "title": "Software Developer Intern",
+                "company": "XYZ Company",
+                "location": "Online",
+                "duration": "May - June 2021",
+                "description": [
+                    "Developed a web based facial recognition authentication system.",
+                    "Implemented a chat application using Reactjs and Firebase."
+                ]
+              }
+            ]
+        }
+    ]
+  }

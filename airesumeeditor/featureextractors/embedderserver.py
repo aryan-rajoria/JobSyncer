@@ -2,6 +2,7 @@
 # this also contains the queue used for this module
 
 import json
+from typing import List
 from flask import Flask, request, jsonify
 from ray.util.queue import Queue
 from featureextractor import SentenceTransformer

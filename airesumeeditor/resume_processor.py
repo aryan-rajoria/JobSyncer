@@ -10,6 +10,9 @@ class ResumeProcessor:
         if isinstance(json_data, str):
             json_data = json.loads(json_data)
         
+        # assume json
+        segments = json.segments()
+
         for segment in json_data:
             title= segment['segment_title']
             match title:
