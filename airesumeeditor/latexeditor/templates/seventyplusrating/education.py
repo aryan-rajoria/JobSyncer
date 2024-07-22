@@ -48,7 +48,40 @@ class Education:
         # initialization of any segment creates an empty object
         # TODO: a potential design flaw as could create and print empty
         # objects
-        pass
+        self.start = """
+        \section{\textbf{Education}}
+        \resumeSubHeadingListStart
+        """
+        self.end = """
+          \resumeSubHeadingListEnd
+          \vspace{-5.5mm}
+        """
+        self.section_start = "\resumeSubheading"
+        self.next_line = "\n"
+        self.section_end = """
+        \resumeItemListEnd
+    
+        \vspace{-3.0mm}
+        """
+        self.print_text = ""
+    
+    def get_data(self, data):
+        self.data = data
+
+    def add_section(self, sections):
+        text = self.section_start + self.next_line
+        text += "{"+sections.get('degree')+"}"+"{"+ sections.get('cgpa') +"}" + self.next_line
+        text += "{"+sections.get('institution')+"}"+"{"+ sections.get('duration') +"}" + self.next_line
+        text += self.section_end
+        return text
+
+    def print_segment(self) -> List[str]:
+        self.print_text = self.start
+        # print each section
+        for i in self.data:
+            self.print_text += self.add_section(i)
+        self.print_text += self.end
+        return self.print_text
 
     def get_fields(self) -> List[str]:
         pass
