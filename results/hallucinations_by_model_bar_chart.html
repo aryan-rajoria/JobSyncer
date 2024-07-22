@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.17.0"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-cfafa62ff1725039ee21c161e6d2aa8d"}, "mark": {"type": "bar", "size": 60}, "encoding": {"tooltip": [{"field": "Model", "type": "nominal"}, {"field": "Number of Hallucinations", "type": "quantitative"}], "x": {"axis": {"title": "Model"}, "field": "Model", "type": "nominal"}, "y": {"axis": {"title": "Number of Hallucinations"}, "field": "Number of Hallucinations", "type": "quantitative"}}, "params": [{"name": "param_1", "select": {"type": "interval", "encodings": ["x", "y"]}, "bind": "scales"}], "title": "Number of Hallucinations by Model", "width": 400, "$schema": "https://vega.github.io/schema/vega-lite/v5.17.0.json", "datasets": {"data-cfafa62ff1725039ee21c161e6d2aa8d": [{"Model": "Orca-Mini-3B", "Number of Hallucinations": 12}, {"Model": "Phi-3", "Number of Hallucinations": 5}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>

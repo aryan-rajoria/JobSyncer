@@ -14,7 +14,7 @@
 import json
 from flask import Flask, request, jsonify, render_template, make_response
 from airesumeeditor.service_helper import generate_resume_pdf
-from resume_processor import ResumeProcessor
+from airesumeeditor.resume_processor import ResumeProcessor
 
 app = Flask(__name__)
 
@@ -27,11 +27,15 @@ resume = ResumeProcessor()
 def upload_cv():
     try:
         data = request.get_json()
-        cv_id = data.get('id')  # Get an ID for the CV if provided
-        if not cv_id:
-            return jsonify({'error': 'CV ID is required'}), 400
-        cv_data[cv_id] = data
-        resume.cv(cv_data[cv_id])
+        # TODO: get users cv for seperating
+        # cv_id = data.get('id')  # Get an ID for the CV if provided
+        # if not cv_id:
+        #     return jsonify({'error': 'CV ID is required'}), 400
+        cv_data = data.get("cv", None)
+        if cv_data:
+            resume.cv(cv_data)
+        else:
+            return jsonify({'error': 'Expected there to be cv'})
         return jsonify({'message': 'CV uploaded successfully'})
     except json.JSONDecodeError:
         return jsonify({'error': 'Invalid JSON data'}), 400
@@ -64,4 +68,4 @@ def generate_resume(cv_id):
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True, port=9002)
+    app.run(host="0.0.0.0", debug=True, port=9002)
