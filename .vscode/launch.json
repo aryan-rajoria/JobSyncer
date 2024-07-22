@@ -5,7 +5,14 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "ai resume server",
+            "name": "Python Debugger: Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Flask: main_server",
             "type": "debugpy",
             "request": "launch",
             "module": "flask",
@@ -16,7 +23,9 @@
             "args": [
                 "run",
                 "--debug",
-                "--no-reload"
+                "--no-reload",
+                "--port",
+                "9002"
             ],
             "jinja": true,
             "autoStartBrowser": false
@@ -71,6 +80,13 @@
             ],
             "jinja": true,
             "autoStartBrowser": false
+        },
+        {
+            "name": "python: main_server",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/airesumeeditor/main_server.py",
+            "console": "integratedTerminal"
         },
     ]
 }
