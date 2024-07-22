@@ -64,3 +64,17 @@ class Projects:
     def get_fields(self) -> List[str]:
         pass
 
+def update(project_name, project_heading, project_description, project_features):
+  project_features_listed = ""
+  for feature in project_features:
+      project_features_listed += " \\item {" + feature + "} \n"
+  return """
+    \resumeProject
+      \newcommand{\project_name}{"""+ project_name +"""} %Project Name
+      \newcommand{\project_heading}{"""+ project_heading +"""} %Project Name%Project Name, Location Name
+      \newcommand{\project_description}{"""+ project_description +"""} 
+
+      \\resumeItemListStart
+        {project_features_latex}\
+      \\resumeItemListEnd
+  """
