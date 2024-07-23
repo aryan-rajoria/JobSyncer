@@ -1,31 +1,20 @@
 import requests
-import json
+from jd_integration_test import send_jd_put as jd_send
+from main_integration_test import send_resume_put as cv_send
 
-def send_resume_put(resume_file_path, url):
-    """Sends a PUT request with a resume JSON file to the specified URL.
+if __name__=="__main__":
 
-    Args:
-        resume_file_path (str): The path to the resume.json file.
-        url (str): The URL to which the resume should be sent.
-    """
-
-    # try:
-    with open(resume_file_path, 'r') as resume_file:
-        headers = {
-            'Content-Type': 'application/json'
-        }
-        resume = json.dumps(json.loads(resume_file.read()).get('cv', None))
-        response = requests.post(url, data=resume, headers=headers)
-        print("test response: ", response)
-        print("Resume successfully uploaded!")
-    # except FileNotFoundError:
-    #     print(f"Error: Resume file not found at '{resume_file_path}'")
-    # except requests.exceptions.RequestException as e:
-    #     print(f"Error sending PUT request: {e}")
-
-
-if __name__ == "__main__":
+    resume_path = "./tests/jd.json"
+    target_url = "http://127.0.0.1:9001/jd"
+    jd_send(resume_path, target_url)
+    
     resume_path = "./tests/resume.json"
     target_url = "http://127.0.0.1:9001/cv"
+    cv_send(resume_path, target_url)
 
-    send_resume_put(resume_path, target_url)
+
+    target_url = "http://127.0.0.1:9001/resume_layout"
+    r = requests.get(target_url)
+    print("test response:", r)
+    print("Resume generated")
+

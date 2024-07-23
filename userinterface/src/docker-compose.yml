@@ -19,7 +19,7 @@ services:
   mainserver:
     image: RajoriaAryan/mainserver:latest
     ports:
-      - "9000:9000"
+      - "9002:9002"
     depends_on:
       - llmserver
       - latexserver
