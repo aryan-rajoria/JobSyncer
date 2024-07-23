@@ -1,0 +1,14 @@
+FROM python:3.11-slim-buster
+
+ENV PYTHONUNBUFFERED=1
+ENV FLASK_APP=embedderserver.py
+ENV FLASK_RUN_HOST=0.0.0.0
+
+WORKDIR /app
+COPY . /app
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+EXPOSE 9001
+
+CMD ["flask", "run", "--port", "9001"]

@@ -16,7 +16,7 @@ def send_to_embedding_service_and_save(data_type, value):
 
 def jd_embeddings(job_descriptions):
     data = {"jd": job_descriptions}
-    r = r.requests.post("https://localhost:9002/jd")
+    r = requests.post(EMBEDDER_URL+"jd", data=data, headers = HEADERS)
     return True
 
 def generate_resume_pdf():
@@ -25,4 +25,4 @@ def generate_resume_pdf():
 def cv_embeddings(cv_array):
     payload = json.dumps(cv_array)
     response = requests.post(EMBEDDER_URL+"cv", data = payload, headers=HEADERS)
-    
+    print("cv_embeddings run:",response.reason, response.content)

@@ -1,11 +1,16 @@
 import ray
 from featureextractor import SentenceEmbedder
 
-@ray.remote(num_cpus=3)
-def sentencetransformer_respond(text):
+@ray.remote(num_cpus=1)
+def sentencetransformer_respond(queue_list):
         model = SentenceEmbedder()
-        embedding = model.generate_embeddings(text)
-        return embedding
+        while True:
+            for iq, oq in queue_list:
+                if iq.empty():
+                    continue
+            text = iq.get()
+            embedding = model.generate_embeddings(text)
+            oq.put(embedding)
 
 def start_llm_backend(max_con=1):
     ray.init()

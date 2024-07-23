@@ -56,20 +56,20 @@
             "items": [
               {
                 "title": "Web Developer Intern",
-                "company": "ABC Company",
+                "description": "ABC Company",
                 "location": "Online",
                 "duration": "June - August 2021",
-                "description": [
+                "features": [
                     "Developed a web based facial recognition authentication system.",
                     "Implemented a chat application using Reactjs and Firebase."
                 ]
               },
               {
                 "title": "Software Developer Intern",
-                "company": "XYZ Company",
+                "description": "XYZ Company",
                 "location": "Online",
                 "duration": "May - June 2021",
-                "description": [
+                "features": [
                     "Developed a web based facial recognition authentication system.",
                     "Implemented a chat application using Reactjs and Firebase."
                 ]

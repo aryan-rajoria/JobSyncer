@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  llmserver:
+    image: RajoriaAryan/llmserver:latest
+    ports:
+      - "9003:9003"
+
+  latexserver:
+    image: RajoriaAryan/latexserver:latest
+    ports:
+      - "9004:9004"
+  
+  embedderserver:
+    image: RajoriaAryan/featureextractor:latest
+    ports:
+      - "9001:9001"
+    
+  mainserver:
+    image: RajoriaAryan/mainserver:latest
+    ports:
+      - "9000:9000"
+    depends_on:
+      - llmserver
+      - latexserver
+      - featureextractor

@@ -43,17 +43,18 @@ def upload_cv():
 @app.route('/upload_jd', methods=['POST'])
 def upload_job_description():
     try:
-        data = request.data.decode('utf-8')
-        job_id = request.args.get('id')  # Get an ID for the job description
-        if not job_id:
-            return jsonify({'error': 'Job ID is required'}), 400
-        job_descriptions[job_id] = data
-        resume.jd(job_descriptions[job_id])
+        data = request.get_json()
+        # data = json.loads(data)
+        # job_id = request.args.get('id')
+        # if not job_id:
+        #     return jsonify({'error': 'Job ID is required'}), 400
+        job_descriptions = data.get('jd', None)
+        resume.jd(job_descriptions)
         return jsonify({'message': 'Job description uploaded successfully'})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-@app.route('/generate_resume/<cv_id>', methods=['GET'])
+@app.route('/generate_resume', methods=['GET'])
 def generate_resume(cv_id):
     if cv_id not in cv_data:
         return jsonify({'error': 'CV not found'}), 404
