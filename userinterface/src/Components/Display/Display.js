@@ -58,6 +58,11 @@ export default function Display(){
         newData[pos]['items'][ind]['features'][num] = str;
         setCurrData(newData);
     }
+    function changeValue(pos, ind, str, ele){
+        const newData = [...currData];
+        newData[pos]['items'][ind][ele] = str;
+        setCurrData(newData);
+    }
     const exportData = () => {
         const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(
           JSON.stringify(currData)
@@ -86,7 +91,7 @@ export default function Display(){
             alert(result);
         } catch (error) {
             console.error('Error saving file:', error);
-            alert('Error saving file');
+            // alert('Error saving file');
         }
     };
     
@@ -103,6 +108,7 @@ export default function Display(){
                         changeHeading={changeHeading}
                         changeDescription={changeDescription}
                         changeFeature={changeFeature}
+                        changeValue={changeValue}
                     />
                 </div>
                 <div id="view_nav" className="flex flex-row items-center justify-between cursor-pointer">
