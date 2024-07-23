@@ -1,6 +1,6 @@
 import requests
 from jd_integration_test import send_jd_put as jd_send
-from main_integration_test import send_resume_put as cv_send
+from tests.cv_integration_test import send_resume_put as cv_send
 
 if __name__=="__main__":
 
