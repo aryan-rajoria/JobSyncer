@@ -14,8 +14,7 @@ import subprocess
 from frameworks import frameworks
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
-
+CORS(app) 
 load_dotenv('.env.local')
 lnk_usr =os.getenv('LINKEDIN_USERNAME')
 lnk_pwd = os.getenv('LINKEDIN_PASSWORD')
@@ -40,9 +39,6 @@ def process_input():
     
     if user_input is None:
         return jsonify({'error': 'No input provided'}), 400
-    
-    # Run your Python script with the user input
-    # Here we are simulating a script execution with subprocess
         
     try:
         driver = webdriver.Chrome()
@@ -81,8 +77,8 @@ def process_input():
         matches = count_matches(job_desp, frameworks)
         print("Matches:", matches)
 
-        with open('job_description.txt', 'w', encoding='utf-8') as file:
-            file.write(job_desp)
+        # with open('job_description.txt', 'w', encoding='utf-8') as file:
+        #     file.write(job_desp)
 
         with open('matches.js', 'w', encoding='utf-8') as file:
             file.write(f"const matches = {matches};\n")
@@ -99,8 +95,27 @@ def process_input():
             'matches': matches
         })
 
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+import json
+import os
 
+app = Flask(__name__)
+CORS(app) 
 
+@app.route('/api/save-data', methods=['POST'])
+def save_data():
+    try:
+        data = request.json.get('data')
+        file_path = os.path.join(os.path.dirname(__file__), 'newData.json')
+        
+        with open(file_path, 'w') as file:
+            json.dump({'data': data}, file, indent=2)
+        
+        return 'File saved successfully', 200
+    except Exception as error:
+        print(f'Error writing file: {error}')
+        return 'Error saving file', 500
 
 if __name__ == '__main__':
     app.run(port=5000)

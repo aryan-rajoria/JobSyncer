@@ -5,7 +5,7 @@
         "items": [
           {
             "title": "proj1",
-            "heading": "something somwthing",
+            "heading": "something something",
             "description": "AWS | Lambda | Golang ",
             "features": ["str1", "str2", "str3"]
           },

@@ -22,7 +22,7 @@ def update(name, course, phone, email, roll_number, github_link, linkedin_link):
     \newcommand{\course}{"""+ course +"""} % Your Program
     \newcommand{\roll}{"""+ roll_number +"""} % Your Roll No.
     \newcommand{\phone}{"""+phone+"""} % Your Phone Number
-    \newcommand{\emaila}{"""+email+"""} %Email 1
+    \newcommand{\emaila}{"""+email+"""} % Email 1
 
     \begin{document}
     \fontfamily{cmr}\selectfont
